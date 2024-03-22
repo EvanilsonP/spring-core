@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLOutput;
+
 @RestController
 public class DemoController {
     // define a private field for the dependency
     private Coach myCoach;
 
     @Autowired
-    public void demoController(Coach theCoach) {
+    public void demoController(@Qualifier("trackCoach") Coach theCoach) {
+        System.out.println("In constructor " + getClass().getSimpleName());
         myCoach = theCoach;
     }
 
